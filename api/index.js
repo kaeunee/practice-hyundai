@@ -1,8 +1,10 @@
 const express = require("express");
+const morgan = require("morgan");
 const app = express();
 import router from "./router/indexRouter";
 import sequelize from "./model/dataSource";
 
+app.use(morgan("tiny"));
 app.use(express.json());
 app.use(
   express.urlencoded({ limit: "300mb", parameterLimit: 100000, extended: true })
@@ -22,7 +24,7 @@ app.get("/test", (req, res) => {
 });
 
 module.exports = {
-  path: "/api",
+  path: "/",
   handle: app,
 };
 

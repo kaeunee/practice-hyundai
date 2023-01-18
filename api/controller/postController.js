@@ -7,12 +7,7 @@ let postDB = [
     content: "content1",
   },
 ];
-/*
-router.get("/all", postController.get_posts); //게시글 전체 조회
-router.post("/add", postController.add_post); //게시글 추가
-router.put("/update", postController.edit_content); //게시글 내용 수정
-router.delete("/:post_id", postController.delete_post); //게시글 삭제
-*/
+
 export default {
   async add_post(req, res) {
     try {
@@ -39,9 +34,9 @@ export default {
   async get_posts(req, res) {
     try {
       const result = await postService.get_posts();
-      res.status(200).json({ result });
+      res.status(200).json(result);
     } catch {
-      const error = new Error("Failed to load post");
+      const error = new Error("Failed.");
       error.statusCode = 400;
       res
         .status(error.statusCode)
@@ -76,7 +71,7 @@ export default {
     try {
       const post_id = req.params.post_id;
       await postService.delete_post(post_id);
-      res.status(200).json({ message: "Deleted" });
+      res.status(200).json({ message: "Deleted." });
     } catch {
       const error = new Error("Failed to delete post");
       error.statusCode = 400;

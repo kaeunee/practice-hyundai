@@ -43,7 +43,7 @@ posts.sync();
 // posts.create({ title: "title 10", content: "10" });
 
 export default {
-  get_all_posts() {
+  get_posts() {
     return posts.findAll(); //SELECT * FROM posts;
   },
 
